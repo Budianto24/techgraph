@@ -1,6 +1,6 @@
 <?php 
 	$host = "localhost";
-	$name = "db_developers";
+	$name = "db_techgraph";
 	$user = "root";
 	$pass = "";
 	$koneksi = mysql_connect($host, $user, $pass) or die("Gagal");
