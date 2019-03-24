@@ -14,7 +14,7 @@
 			echo "<script>alert('Tidak boleh kosong !!')</script>";
 			echo "<meta http-equiv='refresh' content='1' url='login.php'>";
 		}else{
-			$sql = mysql_query("INSERT INTO tb_komentar VALUES(NULL,'$id_post','$nama','$email','$komentar','$website','$author','$judul_post','$tgl_comment')")or die(mysql_error());
+			$sql = mysqli_query($koneksi, "INSERT INTO tb_komentar VALUES(NULL,'$id_post','$nama','$email','$komentar','$website','$author','$judul_post','$tgl_comment')")or die(mysqli_error());
 			if($sql){
 				echo "<meta http-equiv='refresh' content='0' url='read-artikel'>";
 			}else{
@@ -25,14 +25,14 @@
 
 	}
 
-	$com_query=mysql_query("SELECT * FROM tb_komentar WHERE id_post='$id_post' ORDER BY id_comment ASC");
-	$com=mysql_fetch_array($com_query);
+	$com_query=mysqli_query($koneksi, "SELECT * FROM tb_komentar WHERE id_post='$id_post' ORDER BY id_comment ASC");
+	$com=mysqli_fetch_array($com_query);
 
 	$today=date('d M Y');
 ?>
 	
 	<br>
-	Ada <b><?php  $com_num=mysql_num_rows($com_query); echo $com_num;?></b> Komentar di  "<b><?php echo $show_filter['judul'];?></b>"<br><br>
+	Ada <b><?php  $com_num=mysqli_num_rows($com_query); echo $com_num;?></b> Komentar di  "<b><?php echo $show_filter['judul'];?></b>"<br><br>
 				
 	<?php if($com_num == "0"){
 		echo "<b>Tidak Ada Komentar !!</b>";
@@ -47,7 +47,7 @@
     				<p><?php echo $com['komentar'];?></p>
 				</div>
 			</div>
-		<?php } while($com=mysql_fetch_array($com_query));?>
+		<?php } while($com=mysqli_fetch_array($com_query));?>
 
 	<hr>
 	<form action="" method="POST">
