@@ -15,7 +15,7 @@
 			echo "<script>alert('Tidak boleh kosong !!')</script>";
 			echo "<meta http-equiv='refresh' content='1' url='login.php'>";
 		}else{
-			$sql = mysql_query("INSERT INTO tb_login VALUES(NULL,'$username','$password','$email','$status')")or die(mysql_error());
+			$sql = mysqli_query($koneksi, "INSERT INTO tb_login VALUES(NULL,'$username','$password','$email','$status')")or die(mysqli_error());
 			if($sql){
 				echo "<script>alert('Berhasil Input')</script>";
 				echo "<meta http-equiv='refresh' content='1' url='login.php'>";
@@ -27,8 +27,8 @@
 	}
 
 	$query="SELECT * FROM tb_login ORDER BY id ASC";
-	$query_sql=mysql_query($query);
-	$show=mysql_fetch_array($query_sql);
+	$query_sql=mysqli_query($koneksi, $query);
+	$show=mysqli_fetch_array($query_sql);
 	$no=0;
 
 ?>
@@ -78,7 +78,7 @@
 		<td><?php echo $show['status'];?></td>
 		<td align="center"><div id="button"><a href="update-user.php?id=<?php echo $show['id'];?>">Update</a> <a href="delete-user.php?id=<?php echo $show['id'];?>">Delete</a></div></td>
 	</tr>
-	<?php } while($show=mysql_fetch_array($query_sql));?>
+	<?php } while($show=mysqli_fetch_array($query_sql));?>
 </table>
 </div>
 

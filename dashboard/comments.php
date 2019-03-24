@@ -13,8 +13,8 @@
 	}
 	
     $comments_query="SELECT * FROM tb_komentar ORDER BY id_comment ASC";
-    $comments_sql=mysql_query($comments_query);
-    $comments=mysql_fetch_array($comments_sql);
+    $comments_sql=mysqli_query($koneksi, $comments_query);
+    $comments=mysqli_fetch_array($comments_sql);
 	$no=0;
 	
 	$today=date('d M Y');
@@ -82,7 +82,7 @@
                                         <a class="btn btn-default btn-md" href="delete?id=<?php echo $show['id_artikel'];?>" title="Delete" role="button"><span class="fa fa-trash"></span></a>                         
                                         </center></td>
                                     </tr>
-                                    <?php } while($comments=mysql_fetch_array($comments_sql));?>
+                                    <?php } while($comments=mysqli_fetch_array($comments_sql));?>
                                 </tbody>
                             </table>
                     </div>

@@ -2,8 +2,8 @@
 	include ('database/koneksi.php');
 	
 	$artikel_query="SELECT * FROM tb_artikel ORDER BY id_artikel DESC";
-	$artikel_sql=mysql_query($artikel_query);
-	$artikel=mysql_fetch_array($artikel_sql);
+	$artikel_sql=mysqli_query($koneksi, $artikel_query);
+	$artikel=mysqli_fetch_array($artikel_sql);
 	
 ?>
 <!DOCTYPE html>
@@ -42,13 +42,13 @@
         
 	// query
     	$sql =  "SELECT * FROM tb_artikel ORDER BY id_artikel DESC";
-    	$result = mysql_query($sql);
+    	$result = mysqli_query($koneksi, $sql);
         
 	// pagination config start
     	$rpp = 5; // jumlah record per halaman
     	$reload = "blog?";
     	$page = isset($_GET["page"]) ? (intval($_GET["page"])) : 1;
-    	$tcount = mysql_num_rows($result);
+    	$tcount = mysqli_num_rows($result);
     	$tpages = ($tcount) ? ceil($tcount/$rpp) : 1; // total pages, last page number
     	$count = 0;
     	$i = ($page-1)*$rpp;
@@ -57,8 +57,8 @@
 	?>
 	<?php
 		while(($count<$rpp) && ($i<$tcount)) {
-		mysql_data_seek($result,$i);
-		$show = mysql_fetch_array($result);
+		mysqli_data_seek($result,$i);
+		$show = mysqli_fetch_array($result);
 	?>
     <div id="line-box">
 		<div class="col-md-4">

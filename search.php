@@ -26,11 +26,11 @@
 		include ('database/koneksi.php');
 	$data = $_GET['data'];
 	$sql = "select * from tb_artikel where judul like '%$data%' ";
-	$result = mysql_query($sql);
-	if(mysql_num_rows($result) > 0){
+	$result = mysqli_query($koneksi, $sql);
+	if(mysqli_num_rows($result) > 0){
 		?>
 			<?php
-			while($show = mysql_fetch_array($result)){?>
+			while($show = mysqli_fetch_array($result)){?>
 	<div id="line-box">
 		<div class="col-md-4">
 			<div class="img_content"><center><img src="img/post/<?php echo $show['gambar'];?>" height="150"/></center></div>

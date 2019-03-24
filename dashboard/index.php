@@ -11,25 +11,25 @@
 	}else if($_SESSION['status']="admin"){
 		$query="SELECT * FROM tb_artikel ORDER BY id_artikel ASC";
 	}
-		$query_sql=mysql_query($query);
-		$show=mysql_fetch_array($query_sql);
-		$jumlah=mysql_num_rows($query_sql);
+		$query_sql=mysqli_query($koneksi, $query);
+		$show=mysqli_fetch_array($query_sql);
+		$jumlah=mysqli_num_rows($query_sql);
         $no=0;
 		
 		$query="SELECT * FROM tb_contact ORDER BY id_contact ASC";
-		$query_sql=mysql_query($query);
-		$show=mysql_fetch_array($query_sql);
-		$guestbook=mysql_num_rows($query_sql);
+		$query_sql=mysqli_query($koneksi, $query);
+		$show=mysqli_fetch_array($query_sql);
+		$guestbook=mysqli_num_rows($query_sql);
 
         $query="SELECT * FROM tb_login ORDER BY id ASC";
-        $query_sql=mysql_query($query);
-        $show=mysql_fetch_array($query_sql);
-        $user=mysql_num_rows($query_sql);
+        $query_sql=mysqli_query($koneksi, $query);
+        $show=mysqli_fetch_array($query_sql);
+        $user=mysqli_num_rows($query_sql);
 
         $query="SELECT * FROM tb_komentar WHERE author='{$_SESSION['name']}' ORDER BY id_comment ASC";
-        $query_sql=mysql_query($query);
-        $show=mysql_fetch_array($query_sql);
-        $comment=mysql_num_rows($query_sql);
+        $query_sql=mysqli_query($koneksi, $query);
+        $show=mysqli_fetch_array($query_sql);
+        $comment=mysqli_num_rows($query_sql);
 	
 	$today=date('d M Y');
 ?>
@@ -190,8 +190,8 @@
 	include('../database/koneksi.php');
 	
 	$query="SELECT * FROM tb_artikel WHERE author='{$_SESSION['name']}' ORDER BY id_artikel DESC";
-	$query_sql=mysql_query($query);
-	$other=mysql_fetch_array($query_sql);
+	$query_sql=mysqli_query($koneksi, $query);
+	$other=mysqli_fetch_array($query_sql);
 	$no=0;
 ?>			
 <div class="media">

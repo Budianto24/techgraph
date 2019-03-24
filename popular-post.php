@@ -2,8 +2,8 @@
 	include('database/koneksi.php');
 
 	$popular_query="SELECT * FROM tb_artikel ORDER BY id_artikel DESC LIMIT 5";
-	$popular_sql=mysql_query($popular_query);
-	$popular=mysql_fetch_array($popular_sql);
+	$popular_sql=mysqli_query($koneksi, $popular_query);
+	$popular=mysqli_fetch_array($popular_sql);
 	$no=0;
 ?>			
 <!--Artikel Popular & Kategori-->
@@ -20,7 +20,7 @@
 							<?php echo $popular['judul'];?><span class="badge"><?php echo $no?></span>
 						</a> 
 					</div>
-				<?php } while ($popular=mysql_fetch_assoc($popular_sql));?>
+				<?php } while ($popular=mysqli_fetch_assoc($popular_sql));?>
 			</ul>
 		</div>	
 		<div class="tab-pane" id="tab-2">

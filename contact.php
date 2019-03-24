@@ -10,7 +10,7 @@
 			echo "<script>alert('Tidak boleh kosong !!')</script>";
 			echo "<meta http-equiv='refresh' content='1' url='login.php'>";
 		}else{
-			$sql = mysql_query("INSERT INTO tb_contact VALUES(NULL,'$nama','$email','$pesan','$tgl')")or die(mysql_error());
+			$sql = mysqli_query($koneksi, "INSERT INTO tb_contact VALUES(NULL,'$nama','$email','$pesan','$tgl')")or die(mysqli_error());
 			if($sql){
 				echo "<script>alert('Terima Kasih Atas Kritik dan Saran Anda.. <br> :)')</script>";
 				echo "<meta http-equiv='refresh' content='1' url='login.php'>";
@@ -23,8 +23,8 @@
 	}
 
 	$query="SELECT * FROM tb_artikel ORDER BY id_artikel DESC";
-	$query_sql=mysql_query($query);
-	$show=mysql_fetch_array($query_sql);
+	$query_sql=mysqli_query($koneksi, $query);
+	$show=mysqli_fetch_array($query_sql);
 ?>
 <!DOCTYPE html>
 <html>

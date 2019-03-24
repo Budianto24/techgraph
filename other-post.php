@@ -2,8 +2,8 @@
 	include "database/koneksi.php";
 
 	$other_query="SELECT * FROM tb_artikel ORDER BY id_artikel DESC LIMIT 5";
-	$other_sql=mysql_query($other_query);
-	$other=mysql_fetch_array($other_sql);
+	$other_sql=mysqli_query($koneksi, $other_query);
+	$other=mysqli_fetch_array($other_sql);
 ?>
 
 <!--Artikel Lainnya-->
@@ -24,7 +24,7 @@
     					<font color="#666" size="2"><span class="glyphicon glyphicon-calendar"></span> <?php echo $other['tgl'];?> &nbsp; <span class="glyphicon glyphicon-user"></span>  <?php echo $other['author'];?></font>
   					</div>
 				</div>
-			<?php } while ($other=mysql_fetch_assoc($other_sql));?>
+			<?php } while ($other=mysqli_fetch_assoc($other_sql));?>
 		</div>	
 	</div>
 <!--End-->

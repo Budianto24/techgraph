@@ -6,14 +6,14 @@
 		$username= $_POST['username'];
 		$password= $_POST['password'];
 	
-		$query_data = mysql_query("SELECT * FROM tb_login where username='$username' and password='$password' ");
-		$row = mysql_num_rows($query_data);
+		$query_data = mysqli_query($koneksi, "SELECT * FROM tb_login where username='$username' and password='$password' ");
+		$row = mysqli_num_rows($query_data);
 			if(empty($username && $password)){
 				echo "<script>alert('Tidak boleh kosong !!')</script>";
 				echo "<script>window.history.back()</script>";
 			} else {
 				if($row == TRUE	){
-				while($data = mysql_fetch_array($query_data)){
+				while($data = mysqli_fetch_array($query_data)){
 					$status = $data['status'];
 						if($status == "user"){
 							$_SESSION['name']=$username;

@@ -17,7 +17,7 @@
 			echo "<script>alert('Tidak boleh kosong !!')</script>";
 			echo "<meta http-equiv='refresh' content='1' url='login.php'>";
 		}else{
-			$sql = mysql_query("INSERT INTO tb_artikel VALUES(NULL,'$judul','$kategori','$isi','$gambar','$author','$tgl')")or die(mysql_error());
+			$sql = mysqli_query($koneksi, "INSERT INTO tb_artikel VALUES(NULL,'$judul','$kategori','$isi','$gambar','$author','$tgl')")or die(mysqli_error());
 			move_uploaded_file($_FILES['img']['tmp_name'],"../img/post/".$_FILES['img']['name']);
 			if($sql){
 				echo "<script>alert('Berhasil Input')</script>";

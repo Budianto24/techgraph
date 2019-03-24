@@ -7,7 +7,7 @@
 	include "../database/koneksi.php";
 	
 	$id=$_GET['id'];
-	$show = mysql_query("SELECT * FROM tb_artikel WHERE id_artikel='$id'");
+	$show = mysqli_query($koneksi, "SELECT * FROM tb_artikel WHERE id_artikel='$id'");
 	
 	
 	if(isset($_POST['input'])){
@@ -17,7 +17,7 @@
 		$author = $_POST['author'];
 		$tgl = $_POST['tgl'];
 		
-		$data = mysql_query("UPDATE tb_artikel SET judul='$judul', kategori='$kategori', isi='$isi', tgl='$tgl', author='$author' WHERE id_artikel='$id'")or die(mysql_error());
+		$data = mysqli_query($koneksi, "UPDATE tb_artikel SET judul='$judul', kategori='$kategori', isi='$isi', tgl='$tgl', author='$author' WHERE id_artikel='$id'")or die(mysqli_error());
 		$sql = $data;
 		if($sql){
 			echo "<script>alert('Berhasil Update')</script>";

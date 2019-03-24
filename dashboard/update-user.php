@@ -7,12 +7,12 @@
 	include "../database/koneksi.php";
 	
 	$id=$_GET['id'];
-	$show = mysql_query("SELECT * FROM tb_login WHERE id='$id'");
+	$show = mysqli_query($koneksi, "SELECT * FROM tb_login WHERE id='$id'");
 	
-	if(mysql_num_rows($show)==0){
+	if(mysqli_num_rows($show)==0){
 		echo "<script>window.history.back()</script>";
 	}else{
-		$data=mysql_fetch_assoc($show);
+		$data=mysqli_fetch_assoc($show);
 	}
 
 	if(isset($_POST['input'])){
@@ -24,7 +24,7 @@
 			echo "<script>alert('Tidak boleh kosong !!')</script>";
 			echo "<meta http-equiv='refresh' content='1' url='login.php'>";
 		}else{
-			$data = mysql_query("UPDATE tb_login SET username='$username', password='$password', email='$email', status='$status' WHERE id='$id'")or die(mysql_error());
+			$data = mysqli_query($koneksi, "UPDATE tb_login SET username='$username', password='$password', email='$email', status='$status' WHERE id='$id'")or die(mysqli_error());
 			if($data){
 				echo "<script>alert('Berhasil Update')</script>";
 				echo "<meta http-equiv='refresh' content='1' url='login.php'>";
@@ -36,8 +36,8 @@
 	}
 
 	$query="SELECT * FROM tb_login ORDER BY id ASC";
-	$query_sql=mysql_query($query);
-	$show=mysql_fetch_array($query_sql);
+	$query_sql=mysqli_query($koneksi, $query);
+	$show=mysqli_fetch_array($query_sql);
 	$no=0;
 
 ?>
@@ -122,7 +122,7 @@
             <a class="btn btn-default btn-md" href="delete-user.php?id=<?php echo $show['id'];?>" title="Delete" role="button"><span class="fa fa-trash"></span></a>
         </td>
     </tr>
-    <?php } while($show=mysql_fetch_array($query_sql));?>
+    <?php } while($show=mysqli_fetch_array($query_sql));?>
     </tbody>
 </table>
                     </div>

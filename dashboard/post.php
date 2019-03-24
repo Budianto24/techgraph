@@ -11,9 +11,9 @@
 	}else if($_SESSION['status']="admin"){
 		$query="SELECT * FROM tb_artikel ORDER BY id_artikel ASC";
 	}
-		$query_sql=mysql_query($query);
-		$show=mysql_fetch_array($query_sql);
-		$jumlah=mysql_num_rows($query_sql);
+		$query_sql=mysqli_query($koneksi, $query);
+		$show=mysqli_fetch_array($query_sql);
+		$jumlah=mysqli_num_rows($query_sql);
 	$no=0;
 	
 	$today=date('d M Y');
@@ -84,7 +84,7 @@
 										<a class="btn btn-default btn-md" href="delete?id=<?php echo $show['id_artikel'];?>" title="Delete" role="button"><span class="fa fa-trash"></span></a>							
 										</center></td>
                                     </tr>
-									<?php } while($show=mysql_fetch_array($query_sql));?>
+									<?php } while($show=mysqli_fetch_array($query_sql));?>
                                 </tbody>
                             </table>
                     </div>

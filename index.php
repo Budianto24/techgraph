@@ -1,11 +1,11 @@
 <?php 
 	include('database/koneksi.php');
 	
-	$query_sql=mysql_query("SELECT * FROM tb_artikel ORDER BY judul DESC LIMIT 3") or die (mysql_error());
-	$show=mysql_fetch_array($query_sql);
+	$query_sql=mysqli_query($koneksi, "SELECT * FROM tb_artikel ORDER BY judul DESC LIMIT 3") or die (mysql_error());
+	$show=mysqli_fetch_array($query_sql);
 	
-	$query_sql2=mysql_query("SELECT * FROM tb_slideshow ORDER BY id ASC LIMIT 0,3");
-	$show2=mysql_fetch_array($query_sql2);
+	$query_sql2=mysqli_query($koneksi, "SELECT * FROM tb_slideshow ORDER BY id ASC LIMIT 0,3");
+	$show2=mysqli_fetch_array($query_sql2);
 
 ?>
 <!DOCTYPE html>
@@ -99,7 +99,7 @@
       					</div>
     			</div>
   			</div>
-  		<?php } while ($show=mysql_fetch_assoc($query_sql));?>
+  		<?php } while ($show=mysqli_fetch_assoc($query_sql));?>
 </div>	
 
 	

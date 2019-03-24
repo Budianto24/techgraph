@@ -2,8 +2,8 @@
 	include ('database/koneksi.php');
 	
 	$judul=$_GET['title'];
-	$data = mysql_query("SELECT * FROM tb_artikel WHERE judul='$judul'");
-	$show_filter=mysql_fetch_assoc($data);
+	$data = mysqli_query($koneksi, "SELECT * FROM tb_artikel WHERE judul='$judul'");
+	$show_filter=mysqli_fetch_assoc($data);
 	$id_post=$show_filter['id_artikel'];
     
 

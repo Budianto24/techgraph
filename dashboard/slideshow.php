@@ -7,8 +7,8 @@
 	include ('../database/koneksi.php');
 	
 	$query="SELECT * FROM tb_slideshow ORDER BY id ASC";
-	$query_sql=mysql_query($query);
-	$show=mysql_fetch_array($query_sql);
+	$query_sql=mysqli_query($koneksi, $query);
+	$show=mysqli_fetch_array($query_sql);
 	$no=0;
 ?>
 <!DOCTYPE html>
@@ -67,7 +67,7 @@
 										<a  class="btn btn-default btn-md" href="slideshow-input.php?id=<?php echo $show['id'];?>" title="Changed" role="button"><span class="fa fa-edit"></span></a>
 									</td>
 								</tr>
-									<?php } while($show=mysql_fetch_array($query_sql));?>
+									<?php } while($show=mysqli_fetch_array($query_sql));?>
 							</table>
                 		</div>
             		</div>

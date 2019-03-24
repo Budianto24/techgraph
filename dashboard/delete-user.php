@@ -3,12 +3,12 @@
 	
 	if(isset($_GET['id'])){
 		$id=$_GET['id'];
-		$show = mysql_query("SELECT * FROM tb_login WHERE id='$id'");
+		$show = mysqli_query($koneksi, "SELECT * FROM tb_login WHERE id='$id'");
 	
-		if(mysql_num_rows($show)==0){
+		if(mysqli_num_rows($show)==0){
 			echo "<script>window.history.back()</script>";
 		}else{
-			$data = mysql_query("DELETE FROM tb_login WHERE id='$id'")or die(mysql_error());
+			$data = mysqli_query($koneksi, "DELETE FROM tb_login WHERE id='$id'")or die(mysqli_error());
 			$sql = $data;
 			if($sql){
 				header("location:user");

@@ -7,12 +7,12 @@
 	include "../database/koneksi.php";
 	
 	$id=$_GET['id'];
-	$show = mysql_query("SELECT * FROM tb_artikel WHERE id_artikel='$id'");
+	$show = mysqli_query($koneksi, "SELECT * FROM tb_artikel WHERE id_artikel='$id'");
 	
-	if(mysql_num_rows($show)==0){
+	if(mysqli_num_rows($show)==0){
 		echo "<script>window.history.back()</script>";
 	}else{
-		$data=mysql_fetch_assoc($show);
+		$data=mysqli_fetch_assoc($show);
 	}
 	
 	if(isset($_POST['input'])){
@@ -25,7 +25,7 @@
 			echo "<script>alert('Tidak boleh kosong !!')</script>";
 			echo "<meta http-equiv='refresh' content='1' url='login.php'>";
 		}else{
-		$data = mysql_query("UPDATE tb_artikel SET judul='$judul', kategori='$kategori', isi='$isi', tgl='$tgl', author='$author' WHERE id_artikel='$id'")or die(mysql_error());
+		$data = mysqli_query($koneksi, "UPDATE tb_artikel SET judul='$judul', kategori='$kategori', isi='$isi', tgl='$tgl', author='$author' WHERE id_artikel='$id'")or die(mysqli_error());
 		$sql = $data;
 		if($sql){
 			echo "<script>alert('Berhasil Update')</script>";
